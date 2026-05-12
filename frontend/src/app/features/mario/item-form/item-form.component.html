@@ -1,0 +1,48 @@
+<div class="modal-wrapper">
+  <div class="mi-modal-overlay">
+  <div class="mi-modal-content">
+  <div class="modal-header-custom">
+    <h2 class="m-0">Añadir Nuevo Personaje</h2>
+  </div>
+  
+  <hr>
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label class="small fw-bold mb-1">Nombre</label>
+        <input type="text" [(ngModel)]="personajeForm.nombre" class="form-control" placeholder="Ej: Mario">
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <label class="small fw-bold mb-1">Tipo</label>
+        <input type="text" [(ngModel)]="personajeForm.tipo" class="form-control" placeholder="Héroe, aliado, enemigo...">
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <label class="small fw-bold mb-1">Nivel de poder</label>
+        <input type="number" [(ngModel)]="personajeForm.poder" class="form-control" placeholder="50">
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <label class="small fw-bold mb-1">Mundo</label>
+        <input type="text" [(ngModel)]="personajeForm.mundo" class="form-control" placeholder="Ej: Nintendo">
+      </div>
+
+        </div>
+
+    <div class="modal-footer-custom mt-4 d-flex justify-content-end gap-2">
+    <button (click)="cancelar()" class="btn btn-danger px-4">
+      Cancelar
+    </button>
+
+    <button (click)="guardar()" class="btn btn-primary px-4">
+      Guardar
+    </button>
+  </div>
+
+    </div>
+
+</div>
+
+
+</div>
