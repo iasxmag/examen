@@ -1,21 +1,28 @@
-# Usa la imagen oficial de PHP con FPM cambiarla a  8.4 si es necesario
+# Usa la imagen oficial de PHP con FPM 
 FROM php:8.4-fpm
 
-# Instalación de dependencias del sistema y extensiones postgreSQL 
+# Instalación de dependencias del sistema 
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev libpng-dev libonig-dev libpq-dev curl zip \
-    && docker-php-ext-install pdo pdo_pgsql zip mbstring exif pcntl bcmath 
+    && docker-php-ext-install pdo pdo_pgsql zip mbstring exif pcntl bcmath
 
-# Instalación de Composer
+# Instalación de Composer desde la imagen oficial 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www 
-COPY . /var/www 
+# Directorio de trabajo en el contenedor 
+WORKDIR /var/www
 
-# Instalación de dependencias de Laravel y permisos 
+# Copiar el código del backend al contenedor 
+COPY . /var/www
+
+# Instalación de dependencias de Laravel y ajuste de permisos 
 RUN composer install --no-dev --optimize-autoloader \
-    && chown -R www-data:www-data /var/www \
-    && mkdir -p /var/www/storage && chown -R www-data:www-data /var/www/storage
+    && chown -R www-data:www-data /var/www/ \
+    && mkdir -p /var/www/storage \
+    && chown -R www-data:www-data /var/www/storage 
 
-EXPOSE 9000 
+# Exponer el puerto interno de PHP-FPM 
+EXPOSE 9000
+
+# Comando para iniciar PHP-FPM 
 CMD ["php-fpm"]
