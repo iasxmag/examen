@@ -14,6 +14,11 @@ class PersonajeController extends Controller
     return view('personajes.create');
 }
 
+public function index() {
+    $personajes = Personaje::all();
+    return response()->json($personajes);
+}
+
 //guardar el psj en la BD
 public function store(Request $request) {
     $validated = $request->validate([
