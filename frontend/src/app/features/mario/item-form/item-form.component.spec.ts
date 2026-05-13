@@ -68,7 +68,8 @@ describe('ItemFormComponent', () => {
     it('deberia cerrar el modal al guardar', () => {
       spyOn(component.cerrar, 'emit'); // Espía el evento cerrar para verificar si se emite
       component.guardar();
-      const req = httpMock.expectOne('http://localhost:8000/api/personajes'); // Verifica que se haya hecho una solicitud POST a la URL correcta
+      // const req = httpMock.expectOne('http://localhost:8000/api/personajes'); // Verifica que se haya hecho una solicitud POST a la URL correcta
+      const req = httpMock.expectOne('https://backend-yx9j.onrender.com/api/personajes'); // Verifica que se haya hecho una solicitud POST a la URL correcta
       req.flush({ success: true }); // Simula una respuesta exitosa del servidor
       expect(component.cerrar.emit).toHaveBeenCalled(); // Verifica que el evento cerrar se haya emitido
     });

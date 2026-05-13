@@ -13,7 +13,8 @@ export class PersonajeService {
   //apiUrl = 'http://localhost:3000/personaje';
 
   // APUNTAR A LARAVEL
-  apiUrl = 'http://localhost:8000/api/personajes';
+  //apiUrl = 'http://localhost:8000/api/personajes';
+  apiUrl = 'https://backend-yx9j.onrender.com/api/personajes';
 
   // Método CRUD
   // Crear un nuevo personaje

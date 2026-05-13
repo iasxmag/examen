@@ -7,6 +7,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router'; 
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 
+// const apiUrl = 'http://localhost:8000/api/personajes'; // Asegúrate de que esta URL coincida con la que usas en el servicio
+const apiUrl = 'https://backend-yx9j.onrender.com/api/personajes'; // Asegúrate de que esta URL coincida con la que usas en el servicio
+
 describe('PersonajeService', () => {
   // Variables para el servicio y el mock del HttpClient
   let service: PersonajeService;
@@ -43,7 +46,7 @@ describe('PersonajeService', () => {
     });
 
     // Verificar que se hizo una solicitud POST a la URL correcta
-    const req = httpMock.expectOne('http://localhost:8000/api/personajes');
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('POST');
     req.flush({ success: true });
   });
@@ -56,7 +59,7 @@ describe('PersonajeService', () => {
       error: (err) => expect(err).toBeTruthy()
     });
 
-    const req = httpMock.expectOne('http://localhost:8000/api/personajes');
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('POST');
     req.flush({ success: false }, { status: 400, statusText: 'Bad Request' });
   });
@@ -72,7 +75,7 @@ describe('PersonajeService', () => {
     });
 
     //verificar la llamada a la URL
-    const req = httpMock.expectOne('http://localhost:8000/api/personajes');
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     //responde con datos simulados
     req.flush(mockPersonajes);
