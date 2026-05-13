@@ -1,5 +1,5 @@
 # Usa la imagen oficial de PHP con FPM cambiarla a  8.4 si es necesario
-FROM php:8.2-fpm
+FROM php:8.4-fpm
 
 # Instalación de dependencias del sistema y extensiones postgreSQL 
 RUN apt-get update && apt-get install -y \
