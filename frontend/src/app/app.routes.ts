@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import{ Routes } from '@angular/router';
 import { MarioDexPageComponent } from './features/mario/mariodex-page/mariodex-page.component';
 
 export const routes: Routes = [
